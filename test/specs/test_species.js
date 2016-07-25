@@ -21,5 +21,14 @@
             assert.strictEqual(betty.dateOfBirth.getMonth(), date.getMonth(), 'cat birth month matches');
             assert.strictEqual(betty.dateOfBirth.getDate(), date.getDate(), 'cat birth date matches');
         });
+
+        test('bird constructor function inherits name and date of birth', function(){
+            var ted = new window.zoo.Bird('ted');
+            var date = new Date();
+            assert.strictEqual(ted.name, 'ted', 'bird has name');
+            assert.strictEqual(ted.dateOfBirth.getFullYear(), date.getFullYear(), 'bird birth year matches');
+            assert.strictEqual(ted.dateOfBirth.getMonth(), date.getMonth(), 'bird birth month matches');
+            assert.strictEqual(ted.dateOfBirth.getDate(), date.getDate(), 'bird birth date matches');
+        });
     });
 })();

@@ -1,0 +1,33 @@
+{
+  "name": "hmwk22zoo",
+  "version": "1.0.0",
+  "description": "Homework - Week 6 Day 22 - Zoo",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sm873x/zoo.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sm873x/zoo/issues"
+  },
+  "homepage": "https://github.com/sm873x/zoo#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha": "^1.0.2",
+    "mocha": "^2.5.3"
+  }
+}

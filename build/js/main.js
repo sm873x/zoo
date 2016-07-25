@@ -10,14 +10,23 @@
     };
     ns.Animal.prototype.age = function() {
         var now = new Date();
-        var age = now - this.dateOfBirth;
+        var age = (this.dateOfBirth.getFullYear()) - (now.getFullYear());
         return age;
     };
+    
+})(window.zoo);
 
-    // ns.Species = function Species(name, dateOfBirth) {
-    //     Atom.call(this, name, dateOfBirth);
-    //
-    // };
+(function(ns) {
+    'use strict';
+
+    window.zoo = ns = ( ns || {} );
+
+    ns.Dog = function Dog(name) {
+        ns.Animal.call(this, name);
+    };
+    ns.Dog.prototype = Object.create(ns.Animal.prototype);
+    ns.Dog.prototype.constructor = ns.Dog;
+
 })(window.zoo);
 
 //# sourceMappingURL=main.js.map

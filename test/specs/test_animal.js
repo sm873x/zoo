@@ -15,15 +15,15 @@
             var date = new Date();
             console.log(fred);
             assert.strictEqual(fred.name, 'fred', 'Animal has name');
-            assert.strictEqual(fred.dateOfBirth.getYear(), date.getYear(), 'animal birth year matches');
+            assert.strictEqual(fred.dateOfBirth.getFullYear(), date.getFullYear(), 'animal birth year matches');
             assert.strictEqual(fred.dateOfBirth.getMonth(), date.getMonth(), 'animal birth month matches');
             assert.strictEqual(fred.dateOfBirth.getDate(), date.getDate(), 'animal birth date matches');
         });
 
-        // test('Animals have method for determining age in years', function() {
-        //     var now = Date.now();
-        //
-        // });
+        test('Animal constructor has method for getting age', function() {
+            var fred = new window.zoo.Animal('fred');
+            assert.strictEqual(fred.age(), 0);
+        });
     });
 
     suite('species function', function(){

@@ -10,12 +10,8 @@
     };
     ns.Animal.prototype.age = function() {
         var now = new Date();
-        var age = now - this.dateOfBirth;
+        var age = (this.dateOfBirth.getFullYear()) - (now.getFullYear());
         return age;
     };
-
-    // ns.Species = function Species(name, dateOfBirth) {
-    //     Atom.call(this, name, dateOfBirth);
-    //
-    // };
+    
 })(window.zoo);

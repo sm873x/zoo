@@ -43,7 +43,7 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     urls: [
-                        'http://localhost:8888/test/test_index.html'
+                        'http://localhost:8888/test/test_zoo.html'
                     ]
                 }
             }

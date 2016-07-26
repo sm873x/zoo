@@ -11,7 +11,11 @@
 
     ns.Bird.prototype.lay = function() {
         var egg = new ns.Bird();
-        return egg; 
+        return egg;
     };
+
+    // ns.Parrot = function Parrot(name) {
+    //     ns.Bird.call(this, name);
+    // };
 
 })(window.zoo);

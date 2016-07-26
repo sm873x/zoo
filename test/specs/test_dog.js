@@ -8,7 +8,7 @@
         test('dog constructor function inherits name and date of birth', function(){
             var poodle = new window.zoo.Dog('charlie');
             var date = new Date();
-            assert.isObject(poodle, 'poodle is dog object');
+            assert.instanceOf(poodle, window.zoo.Dog, 'poodle is dog object');
             assert.strictEqual(poodle.name, 'charlie', 'poodle has name');
             assert.strictEqual(poodle.dateOfBirth.getFullYear(), date.getFullYear(), 'poodle birth year matches');
             assert.strictEqual(poodle.dateOfBirth.getMonth(), date.getMonth(), 'poodle birth month matches');

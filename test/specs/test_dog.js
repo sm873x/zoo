@@ -27,13 +27,31 @@
 
         test('dog can howl', function() {
             var husky = new window.zoo.Dog('indy');
-            try {
-                var huskyHowl = husky.howlTime(4, 2);
-                assert.strictEqual(huskyHowl, 8, 'howlTime exists');
-            } catch(theError) {
-                assert.fail('no error to catch');
-            }
-            // but can we call the howl function?
+            assert.isFunction(husky.howlTime, 'howlTime is a function');
+            assert.strictEqual(husky.howlTime(4, 2), 8, 'successful\
+                howlTime means dog can howl');
+        });
+
+        test('dog cannot howl without arguments', function() {
+            var direwolf = new window.zoo.Dog('trevor');
+            assert.throws(direwolf.howlTime, Error);
+        });
+
+        test('dog cannot howl if arguments are NaN', function() {
+            var direwolf = new window.zoo.Dog('trevor');
+            assert.throws(function() {
+                direwolf.howlTime('a', NaN);
+            }, Error);
+        });
+
+        test('dog cannot howl if either argument is 0', function() {
+            var direwolf = new window.zoo.Dog('trevor');
+            assert.throws(function() {
+                direwolf.howlTime(0, 2);
+            }, Error);
+            assert.throws(function() {
+                direwolf.howlTime(2, 0);
+            }, Error);
         });
 
         test('dog object can reimplement toString method', function() {
@@ -45,3 +63,13 @@
     });
 
 })();
+
+
+//
+// try {
+//     var noHowl = husky.howlTime();
+//     assert.fail('no howlTime w/o if arguments undefined');
+// } catch(err) {
+//     //assert error is what you expect
+//     assert.instanceOf(err, Error)
+// }

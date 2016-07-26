@@ -119,10 +119,12 @@
      * @return {Number}       Duration of all howls
      */
     ns.Dog.prototype.howlTime = function howlTime(howls, time) {
-        if (!howls || !time) {
-            throw new Error('Your dog howls don\'t exist');
-        } else if (howls === 0 || time === 0) {
+        if (!Number(howls) || !Number(time)) {
+            throw new Error('Your dog howls and time are not valid');
+        } else if (howls === 0 || time === 0 ) {
             throw new Error('There are no dog howls');
+        } else if (!howls || !time) {
+            throw new Error('Your dog howls don\'t exist');
         }
 
         var totalHowl = howls * time;

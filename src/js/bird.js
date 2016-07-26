@@ -4,8 +4,8 @@
     window.zoo = ns = ( ns || {} );
 
     /**
-     * Constructor fn for bird species
-     * @param {String} name Name of bird
+     * Constructor fn creates new bird object
+     * @param {String} name Name of bird created
      */
     ns.Bird = function Bird(name) {
         ns.Animal.call(this, name);
@@ -14,23 +14,22 @@
     ns.Bird.prototype.constructor = ns.Bird;
 
     /**
-     * Lay method called on bird object returns array
-     * Length of returned array is randomly chosen b/w 1 and 20.
-     * @return {Array} An array of new bird objects
+     * Creates nest of new birds
+     * @return {Array} A nest of eggs
      */
     ns.Bird.prototype.lay = function() {
         var nest = [];
         var egg = Math.floor(Math.random() * 20);
         var i;
-        for (i=0; i < egg; i++) {
-            nest.push(new ns.Bird());
+        for (i=0; i <= egg; i++) {
+            nest.push(new ns.Bird(i));
         }
         return nest;
     };
 
     /**
-     * Constructor fn to create parrot object
-     * @param {String} name Name of parrot
+     * Constructor fn to create new parrots
+     * @param {String} name Name of parrot created
      */
     ns.Parrot = function Parrot(name) {
         ns.Bird.call(this, name);
@@ -38,10 +37,9 @@
     ns.Parrot.prototype.constructor = ns.Parrot;
 
     /**
-     * Speak method called on parrot object
-     * Calls words per minute fn
+     * Get words per minute of parrot
      * @param  {Array} words  Array of words spoken by parrot
-     * @param  {Number} minutes Number of minutes need by parrot to speak all words
+     * @param  {Number} minutes Number of minutes needed by parrot to speak all words
      * @return {Number}   Words spoken per minute by parrot
      */
     ns.Parrot.prototype.speak = function wpm(words, minutes) {

@@ -26,6 +26,14 @@
             assert.strictEqual(newAnimal.name, 'animal', 'animal gets assigned name animal');
         });
 
+        test('expired Animal is dead', function () {
+            var fred = new window.zoo.Animal('fred');
+            assert.isFalse(fred.isDead, 'animal starts out alive');
+
+            fred.expire();
+            assert.isTrue(fred.isDead, 'animal is dead');
+        });
+
         test('Animal constructor has method for getting age', function() {
             var fred = new window.zoo.Animal('fred');
             fred.dateOfBirth = new Date('1980-05-01');

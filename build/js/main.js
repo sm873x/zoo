@@ -16,6 +16,15 @@
         }
 
         this.dateOfBirth = new Date();
+        this.isDead = false;
+    };
+
+    /**
+     * Kills the animal
+     * @return {Animal} Animal that is dead
+     */
+    ns.Animal.prototype.expire = function expire() {
+        this.isDead = true;
     };
 
     /**

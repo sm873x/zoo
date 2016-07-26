@@ -14,8 +14,16 @@
         return egg;
     };
 
-    // ns.Parrot = function Parrot(name) {
-    //     ns.Bird.call(this, name);
-    // };
+    ns.Parrot = function Parrot(name) {
+        ns.Bird.call(this, name);
+    };
+    ns.Parrot.prototype.constructor = ns.Parrot;
+
+    ns.Parrot.prototype.speechSpeed = function(words, minutes) {
+        this.words = words;
+        this.minutes = minutes;
+        var wpm = (words.length) / minutes;
+        return wpm;
+    };
 
 })(window.zoo);

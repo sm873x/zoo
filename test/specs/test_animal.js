@@ -21,6 +21,11 @@
             assert.strictEqual(fred.dateOfBirth.getDate(), date.getDate(), 'animal birth date matches');
         });
 
+        test('Animal with no name argument gets name of "animal"', function() {
+            var newAnimal = new window.zoo.Animal();
+            assert.strictEqual(newAnimal.name, 'animal', 'animal gets assigned name animal');
+        });
+
         test('Animal constructor has method for getting age', function() {
             var fred = new window.zoo.Animal('fred');
             fred.dateOfBirth = new Date('1980-05-01');

@@ -5,11 +5,16 @@
 
     /**
      * Constructor function that creates new animal
-     * @param {String} name Name of animal being created
+     * @param {String || Number} name Name of animal being created
      * @return {Animal}     A new animal
      */
     ns.Animal = function Animal(name) {
-        this.name = name;
+        if (!name) {
+            this.name = 'animal';
+        } else {
+            this.name = name;
+        }
+
         this.dateOfBirth = new Date();
     };
 

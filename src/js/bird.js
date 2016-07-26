@@ -5,7 +5,7 @@
 
     /**
      * Constructor fn creates new bird object
-     * @param {String} name Name of bird created
+     * @param {String || Number} name Name of bird created
      */
     ns.Bird = function Bird(name) {
         ns.Animal.call(this, name);

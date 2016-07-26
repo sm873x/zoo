@@ -27,8 +27,12 @@
 
         test('dog can howl', function() {
             var husky = new window.zoo.Dog('indy');
-            assert.instanceOf(husky, window.zoo.Dog, 'husky is dog object');
-            assert.ok(husky.howl, 'husky can howl');
+            try {
+                var huskyHowl = husky.howlTime(4, 2);
+                assert.strictEqual(huskyHowl, 8, 'howlTime exists');
+            } catch(theError) {
+                assert.fail('no error to catch');
+            }
             // but can we call the howl function?
         });
 

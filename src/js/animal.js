@@ -4,8 +4,9 @@
     window.zoo = ns = ( ns || {} );
 
     /**
-     * Constructor fn for animal with name and DOB
-     * @param {String} name Name of animal
+     * Constructor function that creates new animal
+     * @param {String} name Name of animal being created
+     * @return {Animal}     A new animal
      */
     ns.Animal = function Animal(name) {
         this.name = name;
@@ -13,20 +14,20 @@
     };
 
     /**
-     * Method to get age of animal
-     * @return {Number} Age of animal
+     * Gets the age in years of the given animal
+     * @return {Number} Age of animal in years
      */
-    ns.Animal.prototype.age = function age() {
+    ns.Animal.prototype.getAge = function getAge() {
         var now = new Date();
         var age = ((now.getFullYear() - this.dateOfBirth.getFullYear()) );
         return age;
     };
 
     /**
-     * ToString method on animal object
+     * Give sentence naming the animal
      * @return {String} Sentence with name of animal
      */
-    ns.Animal.prototype.toString = function() {
+    ns.Animal.prototype.toString = function nameAnimal() {
         return 'I am an animal named ' + this.name;
     };
 })(window.zoo);

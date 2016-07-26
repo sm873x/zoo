@@ -24,7 +24,7 @@
         test('Animal constructor has method for getting age', function() {
             var fred = new window.zoo.Animal('fred');
             fred.dateOfBirth = new Date('1980-05-01');
-            assert.strictEqual(fred.age(), 36);
+            assert.strictEqual(fred.getAge(), 36);
         });
 
         test('animal can implement toString method', function() {

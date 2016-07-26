@@ -4,8 +4,9 @@
     window.zoo = ns = ( ns || {} );
 
     /**
-     * Constructor fn for dog species
-     * @param {String} name Name of dog
+     * Constructor function that creates a new dog
+     * @param {String} name Name of dog being created
+     * @return {Dog}        A new dog
      */
     ns.Dog = function Dog(name) {
         ns.Animal.call(this, name);
@@ -14,23 +15,29 @@
     ns.Dog.prototype.constructor = ns.Dog;
 
     /**
-     * Method for new dog births
-     * Indicative of mammalian species
-     * @param  {String} puppy Name of puppy born
-     * @return {Object} New dog object
+     * Creates new dog
+     * @param  {String} puppy Name of new dog
+     * @return {Dog}          A new dog
      */
-    ns.Dog.prototype.birth = function(puppy) {
-        return new ns.Dog(puppy);
+    ns.Dog.prototype.birth = function birth(puppyName) {
+        return new ns.Dog(puppyName);
     };
 
     /**
-     * A howl method on a dog object returns a howl
-     * @param  {String} howl A type of sound
-     * @return {String}     Returns a howl
+     * Get total duration in minutes of dog howls
+     * @param  {Number} howls Number of howls
+     * @param  {Number} times Duration of each howl in minutes
+     * @return {Number}       Duration of all howls
      */
-    ns.Dog.prototype.howl = function(howl) {
-        this.howl = howl;
-        return howl;
+    ns.Dog.prototype.howlTime = function howlTime(howls, time) {
+        if (!howls || !time) {
+            throw new Error('Your dog howls don\'t exist');
+        } else if (howls === 0 || time === 0) {
+            throw new Error('There are no dog howls');
+        }
+
+        var totalHowl = howls * time;
+        return totalHowl;
     };
 
 })(window.zoo);

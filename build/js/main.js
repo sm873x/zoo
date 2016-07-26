@@ -4,8 +4,9 @@
     window.zoo = ns = ( ns || {} );
 
     /**
-     * Constructor fn for animal with name and DOB
-     * @param {String} name Name of animal
+     * Constructor function that creates new animal
+     * @param {String} name Name of animal being created
+     * @return {Animal}     A new animal
      */
     ns.Animal = function Animal(name) {
         this.name = name;
@@ -13,20 +14,20 @@
     };
 
     /**
-     * Method to get age of animal
-     * @return {Number} Age of animal
+     * Gets the age in years of the given animal
+     * @return {Number} Age of animal in years
      */
-    ns.Animal.prototype.age = function age() {
+    ns.Animal.prototype.getAge = function getAge() {
         var now = new Date();
         var age = ((now.getFullYear() - this.dateOfBirth.getFullYear()) );
         return age;
     };
 
     /**
-     * ToString method on animal object
+     * Give sentence naming the animal
      * @return {String} Sentence with name of animal
      */
-    ns.Animal.prototype.toString = function() {
+    ns.Animal.prototype.toString = function nameAnimal() {
         return 'I am an animal named ' + this.name;
     };
 })(window.zoo);
@@ -92,8 +93,9 @@
     window.zoo = ns = ( ns || {} );
 
     /**
-     * Constructor fn for dog species
-     * @param {String} name Name of dog
+     * Constructor function that creates a new dog
+     * @param {String} name Name of dog being created
+     * @return {Dog}        A new dog
      */
     ns.Dog = function Dog(name) {
         ns.Animal.call(this, name);
@@ -102,23 +104,29 @@
     ns.Dog.prototype.constructor = ns.Dog;
 
     /**
-     * Method for new dog births
-     * Indicative of mammalian species
-     * @param  {String} puppy Name of puppy born
-     * @return {Object} New dog object
+     * Creates new dog
+     * @param  {String} puppy Name of new dog
+     * @return {Dog}          A new dog
      */
-    ns.Dog.prototype.birth = function(puppy) {
-        return new ns.Dog(puppy);
+    ns.Dog.prototype.birth = function birth(puppyName) {
+        return new ns.Dog(puppyName);
     };
 
     /**
-     * A howl method on a dog object returns a howl
-     * @param  {String} howl A type of sound
-     * @return {String}     Returns a howl
+     * Get total duration in minutes of dog howls
+     * @param  {Number} howls Number of howls
+     * @param  {Number} times Duration of each howl in minutes
+     * @return {Number}       Duration of all howls
      */
-    ns.Dog.prototype.howl = function(howl) {
-        this.howl = howl;
-        return howl;
+    ns.Dog.prototype.howlTime = function howlTime(howls, time) {
+        if (!howls || !time) {
+            throw new Error('Your dog howls don\'t exist');
+        } else if (howls === 0 || time === 0) {
+            throw new Error('There are no dog howls');
+        }
+
+        var totalHowl = howls * time;
+        return totalHowl;
     };
 
 })(window.zoo);

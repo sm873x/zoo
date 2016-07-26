@@ -10,8 +10,13 @@
     ns.Bird.prototype.constructor = ns.Bird;
 
     ns.Bird.prototype.lay = function() {
-        var egg = new ns.Bird();
-        return egg;
+        var nest = [];
+        var egg = Math.floor(Math.random() * 20);
+        var i; 
+        for (i=0; i < egg; i++) {
+            nest.push(new ns.Bird());
+        }
+        return nest;
     };
 
     ns.Parrot = function Parrot(name) {
@@ -19,7 +24,7 @@
     };
     ns.Parrot.prototype.constructor = ns.Parrot;
 
-    ns.Parrot.prototype.speechSpeed = function(words, minutes) {
+    ns.Parrot.prototype.speak = function wpm(words, minutes) {
         this.words = words;
         this.minutes = minutes;
         var wpm = (words.length) / minutes;

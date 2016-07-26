@@ -4,6 +4,7 @@
     var assert = window.chai.assert;
 
     suite('Animal constructor function', function() {
+        
         test('ensure Animal constructor function exists', function() {
             assert.ok(window.zoo.Animal, 'Animal function exists');
             assert.strictEqual(typeof(window.zoo.Animal), 'function', 'Animal is a function' );
@@ -24,9 +25,12 @@
             var fred = new window.zoo.Animal('fred');
             assert.strictEqual(fred.age(), 0);
         });
+
+        test('animal can implement toString method', function() {
+            var sally = new window.zoo.Animal('sally');
+            assert.strictEqual(sally.toString(), 'I am an animal named sally',
+                'animal object can implement toString method');
+        });
     });
 
-    suite('species function', function(){
-
-    });
 })();

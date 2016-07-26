@@ -29,8 +29,8 @@
 
         test('dog object can reimplement toString method', function() {
             var collie = new window.zoo.Dog('lassie');
-            console.log(collie.toString());
-            assert.strictEqual(collie.toString(), '[object Object]', 'collie inherits methods from dog object');
+            assert.strictEqual(collie.toString(), 'I am an animal named lassie',
+                'dog object can implement toString method');
         });
     });
 

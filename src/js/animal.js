@@ -8,10 +8,14 @@
         this.name = name;
         this.dateOfBirth = new Date();
     };
+
     ns.Animal.prototype.age = function() {
         var now = new Date();
         var age = (this.dateOfBirth.getFullYear()) - (now.getFullYear());
         return age;
     };
-    
+
+    ns.Animal.prototype.toString = function() {
+        return 'I am an animal named ' + this.name;
+    };
 })(window.zoo);

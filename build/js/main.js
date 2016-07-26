@@ -8,12 +8,16 @@
         this.name = name;
         this.dateOfBirth = new Date();
     };
+
     ns.Animal.prototype.age = function() {
         var now = new Date();
         var age = (this.dateOfBirth.getFullYear()) - (now.getFullYear());
         return age;
     };
-    
+
+    ns.Animal.prototype.toString = function() {
+        return 'I am an animal named ' + this.name;
+    };
 })(window.zoo);
 
 (function(ns) {
@@ -28,8 +32,13 @@
     ns.Bird.prototype.constructor = ns.Bird;
 
     ns.Bird.prototype.lay = function() {
-        var egg = new ns.Bird();
-        return egg;
+        var nest = [];
+        var egg = Math.floor(Math.random() * 20);
+        var i; 
+        for (i=0; i < egg; i++) {
+            nest.push(new ns.Bird());
+        }
+        return nest;
     };
 
     ns.Parrot = function Parrot(name) {
@@ -37,7 +46,7 @@
     };
     ns.Parrot.prototype.constructor = ns.Parrot;
 
-    ns.Parrot.prototype.speechSpeed = function(words, minutes) {
+    ns.Parrot.prototype.speak = function wpm(words, minutes) {
         this.words = words;
         this.minutes = minutes;
         var wpm = (words.length) / minutes;
@@ -63,7 +72,7 @@
 
     ns.Dog.prototype.howl = function(howl) {
         this.howl = howl;
-        return howl; 
+        return howl;
     };
 
 })(window.zoo);

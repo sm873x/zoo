@@ -20,6 +20,18 @@
             assert.isFunction(terrier.birth, 'terrier has a birth function');
             assert.isObject(terrier.birth(), 'terrier returns object');
         });
+
+        test('dog can howl', function() {
+            var husky = new window.zoo.Dog('indy');
+            assert.instanceOf(husky, window.zoo.Dog, 'husky is dog object');
+            assert.ok(window.zoo.Dog.prototype.howl, 'husky can howl');
+        });
+
+        test('dog object can reimplement toString method', function() {
+            var collie = new window.zoo.Dog('lassie');
+            console.log(collie.toString());
+            assert.strictEqual(collie.toString(), '[object Object]', 'collie inherits methods from dog object');
+        });
     });
 
 })();

@@ -28,6 +28,12 @@
             assert.ok(wordArr, 'parrot has words they can speak');
             assert.strictEqual(speed, (3/5), 'parrot has speech speed');
         });
+
+        test('bird object can reimplement toString method', function() {
+            var swan = new window.zoo.Bird('wanda');
+            console.log(swan.toString());
+            assert.strictEqual(swan.toString(), '[object Object]', 'wanda inherits methods from bird object');
+        });
     });
 
 })();

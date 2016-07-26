@@ -61,6 +61,11 @@
         return new ns.Dog();
     };
 
+    ns.Dog.prototype.howl = function(howl) {
+        this.howl = howl;
+        return howl; 
+    };
+
 })(window.zoo);
 
 //# sourceMappingURL=main.js.map

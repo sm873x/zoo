@@ -16,9 +16,9 @@
      * Method to get age of animal
      * @return {Number} Age of animal
      */
-    ns.Animal.prototype.age = function() {
+    ns.Animal.prototype.age = function age() {
         var now = new Date();
-        var age = (this.dateOfBirth.getFullYear()) - (now.getFullYear());
+        var age = ((now.getFullYear() - this.dateOfBirth.getFullYear()) );
         return age;
     };
 

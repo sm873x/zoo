@@ -4,7 +4,7 @@
     var assert = window.chai.assert;
 
     suite('Animal constructor function', function() {
-        
+
         test('ensure Animal constructor function exists', function() {
             assert.ok(window.zoo.Animal, 'Animal function exists');
             assert.strictEqual(typeof(window.zoo.Animal), 'function', 'Animal is a function' );
@@ -23,7 +23,8 @@
 
         test('Animal constructor has method for getting age', function() {
             var fred = new window.zoo.Animal('fred');
-            assert.strictEqual(fred.age(), 0);
+            fred.dateOfBirth = new Date('1980-05-01');
+            assert.strictEqual(fred.age(), 36);
         });
 
         test('animal can implement toString method', function() {

@@ -9,4 +9,8 @@
     ns.Dog.prototype = Object.create(ns.Animal.prototype);
     ns.Dog.prototype.constructor = ns.Dog;
 
+    ns.Dog.prototype.birth = function() {
+        return new ns.Dog();
+    };
+
 })(window.zoo);

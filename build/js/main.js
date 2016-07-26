@@ -27,18 +27,10 @@
     ns.Bird.prototype = Object.create(ns.Animal.prototype);
     ns.Bird.prototype.constructor = ns.Bird;
 
-})(window.zoo);
-
-(function(ns) {
-    'use strict';
-
-    window.zoo = ns = ( ns || {} );
-
-    ns.Cat = function Cat(name) {
-        ns.Animal.call(this, name);
+    ns.Bird.prototype.lay = function() {
+        var egg = new ns.Bird();
+        return egg; 
     };
-    ns.Cat.prototype = Object.create(ns.Animal.prototype);
-    ns.Cat.prototype.constructor = ns.Cat;
 
 })(window.zoo);
 
@@ -52,6 +44,10 @@
     };
     ns.Dog.prototype = Object.create(ns.Animal.prototype);
     ns.Dog.prototype.constructor = ns.Dog;
+
+    ns.Dog.prototype.birth = function() {
+        return new ns.Dog();
+    };
 
 })(window.zoo);
 

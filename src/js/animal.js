@@ -32,6 +32,9 @@
      * @return {Number} Age of animal in years
      */
     ns.Animal.prototype.getAge = function getAge() {
+        if (this.isDead === true) {
+            throw new Error('The animal is dead');
+        }
         var now = new Date();
         var age = ((now.getFullYear() - this.dateOfBirth.getFullYear()) );
         return age;

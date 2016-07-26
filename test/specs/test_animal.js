@@ -40,6 +40,13 @@
             assert.strictEqual(fred.getAge(), 36);
         });
 
+        test('if Animal is dead age function throws error', function() {
+            var direwolf = new window.zoo.Dog('trevor');
+            assert.throws(function() {
+                direwolf.expires();
+            }, Error);
+        });
+
         test('animal can implement toString method', function() {
             var sally = new window.zoo.Animal('sally');
             assert.strictEqual(sally.toString(), 'I am an animal named sally',

@@ -24,7 +24,7 @@
         test('dog can howl', function() {
             var husky = new window.zoo.Dog('indy');
             assert.instanceOf(husky, window.zoo.Dog, 'husky is dog object');
-            assert.ok(window.zoo.Dog.prototype.howl, 'husky can howl');
+            assert.ok(husky.howl, 'husky can howl');
         });
 
         test('dog object can reimplement toString method', function() {

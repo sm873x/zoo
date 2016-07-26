@@ -27,9 +27,9 @@
      * Get total duration in minutes of dog howls
      * @param  {Number} howls Number of howls
      * @param  {Number} times Duration of each howl in minutes
-     * @return {Number}       Duration of all howls
+     * @return {Number}       Duration of all howls in minutes
      */
-    ns.Dog.prototype.howlTime = function howlTime(howls, time) {
+    ns.Dog.prototype.getHowlTime = function getHowlTime(howls, time) {
         if (!Number(howls) || !Number(time)) {
             throw new Error('Your dog howls and time are not valid');
         } else if (howls === 0 || time === 0 ) {
@@ -38,8 +38,8 @@
             throw new Error('Your dog howls don\'t exist');
         }
 
-        var totalHowl = howls * time;
-        return totalHowl;
+        var howlTime = howls * time;
+        return howlTime;
     };
 
 })(window.zoo);

@@ -27,30 +27,30 @@
 
         test('dog can howl', function() {
             var husky = new window.zoo.Dog('indy');
-            assert.isFunction(husky.howlTime, 'howlTime is a function');
-            assert.strictEqual(husky.howlTime(4, 2), 8, 'successful\
-                howlTime means dog can howl');
+            assert.isFunction(husky.getHowlTime, 'getHowlTime is a function');
+            assert.strictEqual(husky.getHowlTime(4, 2), 8, 'successful\
+                getHowlTime means dog can howl');
         });
 
         test('dog cannot howl without arguments', function() {
             var direwolf = new window.zoo.Dog('trevor');
-            assert.throws(direwolf.howlTime, Error);
+            assert.throws(direwolf.getHowlTime, Error);
         });
 
         test('dog cannot howl if arguments are NaN', function() {
             var direwolf = new window.zoo.Dog('trevor');
             assert.throws(function() {
-                direwolf.howlTime('a', NaN);
+                direwolf.getHowlTime('a', NaN);
             }, Error);
         });
 
         test('dog cannot howl if either argument is 0', function() {
             var direwolf = new window.zoo.Dog('trevor');
             assert.throws(function() {
-                direwolf.howlTime(0, 2);
+                direwolf.getHowlTime(0, 2);
             }, Error);
             assert.throws(function() {
-                direwolf.howlTime(2, 0);
+                direwolf.getHowlTime(2, 0);
             }, Error);
         });
 
@@ -67,8 +67,8 @@
 
 //
 // try {
-//     var noHowl = husky.howlTime();
-//     assert.fail('no howlTime w/o if arguments undefined');
+//     var noHowl = husky.getHowlTime();
+//     assert.fail('no getHowlTime w/o if arguments undefined');
 // } catch(err) {
 //     //assert error is what you expect
 //     assert.instanceOf(err, Error)

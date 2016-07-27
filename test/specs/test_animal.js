@@ -38,10 +38,10 @@
         test('animal constructor has method for getting age', function() {
             var fred = new window.zoo.Animal('fred');
             fred.dateOfBirth = new Date('1980-05-01');
-            assert.strictEqual(fred.getAge(), 36);
+            assert.strictEqual(fred.getAge(), 36, 'animal has age in years');
         });
 
-        test('if animal is dead age function throws error', function() {
+        test('if animal is dead then age function throws error', function() {
             var direwolf = new window.zoo.Dog('trevor');
             assert.throws(function() {
                 direwolf.expires();

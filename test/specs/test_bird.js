@@ -38,6 +38,14 @@
             assert.isArray(pennyNest, 'canary returns nest array');
         });
 
+        test('nest contains new birds', function() {
+            var canary = new window.zoo.Bird('penny');
+            var pennyNest = canary.layNest(4);
+            pennyNest.forEach(function(numEggs, i) {
+                assert.instanceOf(numEggs, window.zoo.Bird);
+            });
+        });
+
         test('lay nest throws error if no argument with number of eggs', function() {
             var canary = new window.zoo.Bird('penny');
             assert.throws(function() {

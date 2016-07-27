@@ -4,37 +4,105 @@
     var assert = window.chai.assert;
 
     suite('bird species', function() {
-        
+
         test('bird constructor function inherits name and date of birth', function(){
             var robin = new window.zoo.Bird('ted');
-            var date = new Date();
-            assert.instanceOf(robin, window.zoo.Bird, 'robin is bird object');
-            assert.strictEqual(robin.name, 'ted', 'robin has name');
-            assert.strictEqual(robin.dateOfBirth.getFullYear(), date.getFullYear(), 'robin birth year matches');
-            assert.strictEqual(robin.dateOfBirth.getMonth(), date.getMonth(), 'robin birth month matches');
-            assert.strictEqual(robin.dateOfBirth.getDate(), date.getDate(), 'robin birth date matches');
+            assert.instanceOf(robin, window.zoo.Bird, 'robin is bird');
+            assert.instanceOf(robin, window.zoo.Animal, 'bird is animal');
         });
 
-        test('bird can lay one or more eggs', function() {
+        test('create new bird throws error if no name argument', function() {
+            assert.throws(function() {
+                new window.zoo.Bird();
+            }, ReferenceError);
+
+            assert.throws(function() {
+                new window.zoo.Bird(null);
+            }, ReferenceError);
+        });
+
+        test('create new bird throws error if name is not a string', function() {
+            assert.throws(function() {
+                new window.zoo.Bird(2);
+            }, TypeError);
+
+            assert.throws(function() {
+                new window.zoo.Bird(true);
+            }, TypeError);
+        });
+
+        test('bird can lay a nest of one or more eggs', function() {
             var canary = new window.zoo.Bird('penny');
-            assert.isFunction(canary.lay, 'canary has lay egg function');
-            assert.isArray(canary.lay(), 'canary returns nest array');
+            var pennyNest = canary.layNest(1);
+            assert.isFunction(canary.layNest, 'canary has lay nest function');
+            assert.isArray(pennyNest, 'canary returns nest array');
         });
 
-        test('parrot can speak', function() {
-            var parrot = new window.zoo.Bird('penny');
-            var wordArr = [ 'apple', 'carrot', 'nuts' ];
-            var speed = window.zoo.Parrot.prototype.speak( wordArr, 5);
-            assert.instanceOf(parrot, window.zoo.Bird, 'parrot is bird object');
+        test('lay nest throws error if no argument with number of eggs', function() {
+            var canary = new window.zoo.Bird('penny');
+            assert.throws(function() {
+                canary.layNest();
+            }, ReferenceError);
+            assert.throws(function() {
+                canary.layNest(null);
+            }, ReferenceError);
+        });
+
+        test('number of eggs for lay nest needs to be a number', function() {
+            var canary = new window.zoo.Bird('penny');
+            assert.throws(function() {
+                canary.layNest('a');
+            }, TypeError);
+        });
+
+        test('lay nest function needs at least one egg to make new nest', function() {
+            var canary = new window.zoo.Bird('penny');
+            assert.throws(function() {
+                canary.layNest(0);
+            }, ReferenceError);
+        });
+
+        test('create new parrot throws error if no name argument', function() {
+            assert.throws(function() {
+                new window.zoo.Parrot();
+            }, ReferenceError);
+
+            assert.throws(function() {
+                new window.zoo.Parrot(null);
+            }, ReferenceError);
+        });
+
+        test('create new parrot throws error if name is not a string', function() {
+            assert.throws(function() {
+                new window.zoo.Parrot(2);
+            }, TypeError);
+
+            assert.throws(function() {
+                new window.zoo.Parrot(true);
+            }, TypeError);
+        });
+
+        test('parrot can speak with speed of wpm', function() {
+            var macaw = new window.zoo.Parrot('penny');
+            assert.instanceOf(macaw, window.zoo.Bird, 'parrot is bird object');
+            assert.isTrue(macaw.canSpeak, 'parrot can speak');
+
+            var wordArr = [ 'apple', 'carrot', 'nuts', 'polly' ];
             assert.ok(wordArr, 'parrot has words they can speak');
-            assert.strictEqual(speed, (3/5), 'parrot has speech speed');
+            // assert.strictEqual(macaw.getWpm(wordArr, 2), 2, 'parrot speaks with speed of wpm' );
         });
 
-        test('bird object can reimplement toString method', function() {
-            var swan = new window.zoo.Bird('wanda');
-            assert.strictEqual(swan.toString(), 'I am an animal named wanda',
-                'bird object can implement toString method');
+        test('get speech speed for parrot throws error if parrot cannot\
+         speak at all', function() {
+            var macaw = new window.zoo.Parrot('penny');
+            assert.isTrue(macaw.canSpeak, 'parrot is born able to speak');
+
+            macaw.canSpeak = false;
+            assert.throws(function(){
+                macaw.getWpm(10, 2);
+            }, Error);
         });
+
     });
 
 })();

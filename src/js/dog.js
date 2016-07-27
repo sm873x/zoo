@@ -9,6 +9,11 @@
      * @return {Dog}        A new dog
      */
     ns.Dog = function Dog(name) {
+        if (!name) {
+            throw new ReferenceError ('Dog must have name');
+        } else if (typeof(name) !== 'string') {
+            throw new TypeError ('Your dog name is invalid');
+        }
         ns.Animal.call(this, name);
     };
     ns.Dog.prototype = Object.create(ns.Animal.prototype);
@@ -16,11 +21,18 @@
 
     /**
      * Creates new dog
-     * @param  {String} puppy Name of new dog
+     * @param  {String} puppyName Name of new dog
      * @return {Dog}          A new dog
      */
     ns.Dog.prototype.birth = function birth(puppyName) {
-        return new ns.Dog(puppyName);
+        if (!puppyName) {
+            throw new ReferenceError ('Puppy must have name');
+        } else if (typeof(puppyName) !== 'string') {
+            throw new TypeError ('Your puppy name is invalid');
+        }
+
+        var name = String(puppyName);
+        return new ns.Dog(name);
     };
 
     /**
@@ -31,11 +43,11 @@
      */
     ns.Dog.prototype.getHowlTime = function getHowlTime(howls, time) {
         if (!Number(howls) || !Number(time)) {
-            throw new Error('Your dog howls and time are not valid');
+            throw new TypeError('Your dog howls and time are not valid');
         } else if (howls === 0 || time === 0 ) {
-            throw new Error('There are no dog howls');
+            throw new TypeError('There are no dog howls');
         } else if (!howls || !time) {
-            throw new Error('Your dog howls don\'t exist');
+            throw new TypeError('Your dog howls don\'t exist');
         }
 
         var howlTime = howls * time;

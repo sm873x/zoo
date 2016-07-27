@@ -5,24 +5,59 @@
 
     suite('dog species', function(){
 
-        test('dog constructor function inherits name and date of birth', function(){
+        test('create new dog function is animal object', function(){
             var poodle = new window.zoo.Dog('charlie');
-            var date = new Date();
             assert.instanceOf(poodle, window.zoo.Dog, 'poodle is dog object');
             assert.instanceOf(poodle, window.zoo.Animal, 'poodle is Animal object');
-            assert.strictEqual(poodle.name, 'charlie', 'poodle has name');
-            assert.strictEqual(poodle.dateOfBirth.getFullYear(), date.getFullYear(), 'poodle birth year matches');
-            assert.strictEqual(poodle.dateOfBirth.getMonth(), date.getMonth(), 'poodle birth month matches');
-            assert.strictEqual(poodle.dateOfBirth.getDate(), date.getDate(), 'poodle birth date matches');
+        });
+
+        test('create new dog function throws error if no name argument', function() {
+            assert.throws(function() {
+                new window.zoo.Dog();
+            }, ReferenceError);
+
+            assert.throws(function() {
+                new window.zoo.Dog(null);
+            }, ReferenceError);
+        });
+
+        test('create new dog function throws error if name is not a string', function() {
+            assert.throws(function() {
+                new window.zoo.Dog(2);
+            }, TypeError);
+
+            assert.throws(function() {
+                new window.zoo.Dog(true);
+            }, TypeError);
         });
 
         test('dog can give birth', function(){
-            var terrier = new window.zoo.Dog('chad');
-            assert.isFunction(terrier.birth, 'terrier has a birth function');
-            assert.isObject(terrier.birth(), 'terrier returns object');
-            // but was it a Dog that was returned?
-            // and can we call this multiple times??
-            // can birth() work without a name?
+            var terrier = new window.zoo.Dog('emily');
+            var puppy = terrier.birth('buddy');
+            var twoPuppies = terrier.birth('one').birth('two');
+            assert.isOk(puppy, 'terrier has a birth function');
+            assert.instanceOf(puppy, window.zoo.Dog);
+            assert.isOk(twoPuppies, 'birth function can be called multiple times');
+        });
+
+        test('birth function throws error if no puppy name argument', function() {
+            var terrier = new window.zoo.Dog('emily');
+            assert.throws(terrier.birth, ReferenceError);
+
+            assert.throws(function() {
+                terrier.birth(null);
+            }, ReferenceError);
+        });
+
+        test('birth function throws error if puppy name is not a string', function() {
+            var terrier = new window.zoo.Dog('emily');
+            assert.throws(function() {
+                terrier.birth(2);
+            }, TypeError);
+
+            assert.throws(function() {
+                terrier.birth(true);
+            }, TypeError);
         });
 
         test('dog can howl', function() {
@@ -34,31 +69,25 @@
 
         test('dog cannot howl without arguments', function() {
             var direwolf = new window.zoo.Dog('trevor');
-            assert.throws(direwolf.getHowlTime, Error);
+            assert.throws(direwolf.getHowlTime, TypeError);
         });
 
         test('dog cannot howl if arguments are NaN', function() {
             var direwolf = new window.zoo.Dog('trevor');
             assert.throws(function() {
                 direwolf.getHowlTime('a', NaN);
-            }, Error);
+            }, TypeError);
         });
 
         test('dog cannot howl if either argument is 0', function() {
             var direwolf = new window.zoo.Dog('trevor');
             assert.throws(function() {
                 direwolf.getHowlTime(0, 2);
-            }, Error);
+            }, TypeError);
+            
             assert.throws(function() {
                 direwolf.getHowlTime(2, 0);
-            }, Error);
-        });
-
-        test('dog object can reimplement toString method', function() {
-            // probably don't need this since it is tested on Animal
-            var collie = new window.zoo.Dog('lassie');
-            assert.strictEqual(collie.toString(), 'I am an animal named lassie',
-                'dog object can implement toString method');
+            }, TypeError);
         });
     });
 
